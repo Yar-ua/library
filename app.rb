@@ -1,26 +1,29 @@
 require_relative './src/classes/library'
-
 require 'faker'
 require 'yaml'
 
-# arr = []
-# 10.times { arr.push(Faker::Name.name) }
-
-# puts arr
-
-# File.new('data.yaml', 'w')
-# File.open('data.yaml', 'w') { |file| file.write(arr.to_yaml) }
-
-# puts 'file writed'
-
 library = Library.new
-file_name = "data.yml"
+file_name = "lib_data.yaml"
 
 if !File.exist?(file_name)
-  ### TODO create seeds
-  ### TODO create YAML file
+  library.seed_authors(10)
+  library.seed_books(3)
+  library.seed_readers(40)
+  library.seed_orders(150)
+  
+  print "\ncreating data YAML file..."
+  File.new('lib_data.yaml', 'w')
+  File.open('lib_data.yaml', 'w') { |file| file.write(library.to_yaml) }
+  puts 'file created'
 end
+
+# puts library.inspect
 
 ### TODO read YAML file
 
-### TODO puts info
+### TODO puts info  
+  
+  
+  
+  
+  
