@@ -1,0 +1,6 @@
+data_filename: "lib_data.yaml"
+seeds:
+  authors: 10
+  books: 3
+  readers: 40
+  orders: 100

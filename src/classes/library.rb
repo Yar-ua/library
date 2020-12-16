@@ -17,7 +17,7 @@ class Library
   end
 
   def save_file(file_name)
-    print "\ncreating data YAML file..."
+    print "\n==> creating data YAML file... "
     File.new(file_name, 'w')
     File.open(file_name, 'w') { |file| file.write(self.to_yaml) }
     puts 'file created'
