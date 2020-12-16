@@ -37,29 +37,29 @@ class Library
     end
   end
   
-  def top_reader
+  def top_reader(qty = 1)
     readers = []
-    select_data(3, :reader).each {|reader| readers << reader.name}
+    select_data(:reader, qty).each {|reader| readers << reader.name}
     readers
   end
   
-  def most_popular_books
+  def most_popular_books(qty = 1)
     books = []
-    select_data(3, :book).each {|book| books << book.title}
+    select_data(:book, qty).each {|book| books << book.title}
     books
   end
   
-  def readers_of_popular_books
-    books = select_data(3, :book)
+  def readers_of_popular_books(qty = 3)
+    books = select_data(:book, qty)
     @orders.select { |order| books.include? order.book }.map(&:reader).uniq.size
   end
   
   
   private
 
-  def select_data(elements_qty, method)
+  def select_data(method, element_qty)
     @orders.group_by(&method)
-           .max_by(elements_qty) { |_, value| value.length }
+           .max_by(element_qty) { |_, value| value.length }
            .to_h.keys
   end
 
