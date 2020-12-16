@@ -1,33 +1,35 @@
+# frozen_string_literal: true
+
 require 'faker'
 
+# Description/Explanation of SeedHelper module
 module SeedHelper
-
   def seed_authors(qty)
     # generate Authors
     print "\n==> generating authors... "
-    
-    qty.times do 
+
+    qty.times do
       @authors << Author.new(Faker::Book.unique.author, 'some bio')
     end
-    
-    puts "done"
+
+    puts 'done'
   end
-  
+
   def seed_books(qty)
     # generate Books
     print "\n==> generating books... "
-    
+
     @authors.each do |author|
       rand(1..qty).times { @books << Book.new(Faker::Book.unique.title, author.name) }
     end
-    
-    puts "done"
+
+    puts 'done'
   end
-  
+
   def seed_readers(qty)
     # generate Readers
     print "\n==> generating readers... "
-    
+
     qty.times do
       name = Faker::Name.unique.name
       email = Faker::Internet.email(name: name)
@@ -36,21 +38,20 @@ module SeedHelper
       house = Faker::Address.building_number
       @readers << Reader.new(name, email, city, street, house)
     end
-    
-    puts "done"
+
+    puts 'done'
   end
-  
+
   def seed_orders(qty)
     # generate Orders
     print "\n==> generating orders... "
-    
+
     qty.times do
       book_random = rand(0...@books.size)
       reader_random = rand(0...@readers.size)
       @orders << Order.new(@books[book_random], @readers[reader_random])
     end
-    
-    puts "done"
-  end
 
+    puts 'done'
+  end
 end
