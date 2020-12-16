@@ -47,7 +47,7 @@ module SeedHelper
     qty.times do
       book_random = rand(0...@books.size)
       reader_random = rand(0...@readers.size)
-      @orders << Order.new(book_random, reader_random)
+      @orders << Order.new(@books[book_random], @readers[reader_random])
     end
     
     puts "done"

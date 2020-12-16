@@ -1,29 +1,27 @@
 require_relative './src/classes/library'
-require 'faker'
-require 'yaml'
 
 library = Library.new
 file_name = "lib_data.yaml"
 
+#  create YAML file
 if !File.exist?(file_name)
   library.seed_authors(10)
   library.seed_books(3)
   library.seed_readers(40)
   library.seed_orders(150)
   
-  print "\ncreating data YAML file..."
-  File.new('lib_data.yaml', 'w')
-  File.open('lib_data.yaml', 'w') { |file| file.write(library.to_yaml) }
-  puts 'file created'
+  library.save_file(file_name)
 end
 
-# puts library.inspect
+#  read YAML file
+library.load_file(file_name)
 
-### TODO read YAML file
-
-### TODO puts info  
-  
-  
-  
-  
-  
+puts "====="
+puts "top readers:"
+puts library.top_reader
+puts "====="
+puts "top of the most popular books:"
+puts library.most_popular_books
+puts "==="
+puts "Qusntity of readers of the most popular books"
+puts library.readers_of_popular_books
