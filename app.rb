@@ -14,9 +14,9 @@ end
 
 def stata_output(conf)
   puts '====='
-  puts "Top readers: #{@library.top_reader(conf['top_readers']).join(', ')}"
+  puts "Top readers: #{@library.top_reader(conf['top_readers']).join(' || ')}"
   puts '====='
-  puts "Top of the most popular books: #{@library.most_popular_books(conf['top_books']).join(', ')}"
+  puts "Top of the most popular books: #{@library.most_popular_books(conf['top_books']).join(' || ')}"
   puts '====='
   puts "Quantity of readers of the most popular books: #{@library.readers_of_popular_books(conf['readers_qty'])}"
 end
@@ -39,3 +39,8 @@ end
 
 # output library statistic
 stata_output(config['output'])
+
+### TODO
+# Validators
+# Errors
+# Loader

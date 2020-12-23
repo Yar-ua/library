@@ -10,7 +10,7 @@ require 'yaml'
 # Description/Explanation of Library class
 class Library
   include SeedHelper
-  attr_accessor :authors, :books, :orders, :readers
+  attr_reader :authors, :books, :orders, :readers
 
   def initialize
     @authors = []
@@ -20,32 +20,23 @@ class Library
   end
 
   def create(file_name)
-    print "\n==> creating data YAML file... "
-    File.new(file_name, 'w')
     File.open(file_name, 'w') { |file| file.write(to_yaml) }
-    puts 'file created'
   end
 
   def read(file_name)
-    print "\nreading data file... "
     data = YAML.load_file(file_name)
     @authors = data.authors
     @books = data.books
     @orders = data.orders
     @readers = data.readers
-    puts 'done'
   end
 
   def top_reader(qty = 1)
-    readers = []
-    select_data(:reader, qty).each { |reader| readers << reader.name }
-    readers
+    select_data(:reader, qty).map(&:name)
   end
 
   def most_popular_books(qty = 1)
-    books = []
-    select_data(:book, qty).each { |book| books << book.title }
-    books
+    select_data(:book, qty).map(&:title)
   end
 
   def readers_of_popular_books(qty = 3)
