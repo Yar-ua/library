@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'faker'
-
 # Description/Explanation of SeedHelper module
 module SeedHelper
   def seed_authors(qty)
@@ -12,7 +10,7 @@ module SeedHelper
 
   def seed_books(qty)
     @authors.each do |author|
-      rand(1..qty).times { @books << Book.new(Faker::Book.unique.title, author.name) }
+      rand(1..qty).times { @books << Book.new(Faker::Book.unique.title, author) }
     end
   end
 
@@ -22,7 +20,7 @@ module SeedHelper
       email = Faker::Internet.email(name: name)
       city = Faker::Address.city
       street = Faker::Address.street_name
-      house = Faker::Address.building_number
+      house = Faker::Address.building_number.to_i
       @readers << Reader.new(name, email, city, street, house)
     end
   end

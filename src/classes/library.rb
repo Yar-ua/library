@@ -1,12 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'author'
-require_relative 'book'
-require_relative 'order'
-require_relative 'reader'
-require_relative './modules/seed_helper'
-require 'yaml'
-
 # Description/Explanation of Library class
 class Library
   include SeedHelper

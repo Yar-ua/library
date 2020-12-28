@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './src/classes/library'
-require 'yaml'
+require_relative './src/loader'
 
 config = YAML.load_file(File.join(__dir__, 'config', 'config.yml'))
 
@@ -24,23 +23,15 @@ end
 @library = Library.new
 file_name = config['data_filename']
 
-# create YAML file
 unless File.exist?(file_name)
   prepare_seeds(config['seeds'])
   @library.create(file_name)
 end
 
-#  read YAML file
 if File.exist?(file_name)
   @library.read(file_name)
 else
   puts 'Cannot load data - no data file'
 end
 
-# output library statistic
 stata_output(config['output'])
-
-### TODO
-# Validators
-# Errors
-# Loader
