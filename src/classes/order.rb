@@ -15,6 +15,7 @@ class Order
   protected
 
   def validate(book, reader, date)
+    validate_presence(book, reader, date)
     validate_type(Book, book)
     validate_type(Reader, reader)
     validate_type(Date, date)

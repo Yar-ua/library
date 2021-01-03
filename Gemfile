@@ -7,5 +7,9 @@ ruby '2.7.2'
 
 gem 'faker'
 gem 'fasterer', require: false
-gem 'pry'
 gem 'rubocop', require: false
+
+group :development, :test do
+  gem 'pry'
+  gem 'rspec'
+end

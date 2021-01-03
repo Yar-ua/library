@@ -10,7 +10,7 @@ module SeedHelper
 
   def seed_books(qty)
     @authors.each do |author|
-      rand(1..qty).times { @books << Book.new(Faker::Book.unique.title, author) }
+      rand(1..qty).times { @books << Book.new(Faker::Book.title, author) }
     end
   end
 

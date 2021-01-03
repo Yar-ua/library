@@ -1,4 +1,5 @@
 data_filename: "lib_data.yaml"
+data_filename_test: "lib_data_test.yaml"
 seeds:
   authors: 10
   books: 3

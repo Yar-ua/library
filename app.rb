@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
+# @config value was initialized in loader.rb file
 require_relative './src/loader'
-
-config = YAML.load_file(File.join(__dir__, 'config', 'config.yml'))
 
 def prepare_seeds(conf)
   @library.seed_authors(conf['authors'])
@@ -21,10 +20,10 @@ def stata_output(conf)
 end
 
 @library = Library.new
-file_name = config['data_filename']
+file_name = @config['data_filename']
 
 unless File.exist?(file_name)
-  prepare_seeds(config['seeds'])
+  prepare_seeds(@config['seeds'])
   @library.create(file_name)
 end
 
@@ -34,4 +33,4 @@ else
   puts 'Cannot load data - no data file'
 end
 
-stata_output(config['output'])
+stata_output(@config['output'])
