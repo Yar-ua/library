@@ -56,8 +56,8 @@ RSpec.describe Library do
     end
 
     it 'Test most_popular_books method' do
-      30.times { @library.orders << Order.new(@library.books[2], @library.readers.sample) }
-      25.times { @library.orders << Order.new(@library.books[3], @library.readers.sample) }
+      60.times { @library.orders << Order.new(@library.books[2], @library.readers.sample) }
+      45.times { @library.orders << Order.new(@library.books[3], @library.readers.sample) }
       expect(@library.most_popular_books.size).to eq(1)
       expect(@library.most_popular_books(2).size).to eq(2)
       expect(@library.most_popular_books).to eq(Array(@library.books[2].title))
