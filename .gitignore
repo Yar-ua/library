@@ -1,3 +1,9 @@
+# ignore this
 *.yaml
 *.yml
+
+# do not ignore this
 !config.yml
+!config_test.yml
+!.fasterer.yml
+!.rubocop.yml

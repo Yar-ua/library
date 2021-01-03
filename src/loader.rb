@@ -13,5 +13,4 @@ require_relative './classes/author'
 require_relative './classes/book'
 require_relative './classes/order'
 require_relative './classes/reader'
-
-@config = YAML.load_file(File.expand_path('../config/config.yml', __dir__))
+require_relative './classes/app'

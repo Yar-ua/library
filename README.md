@@ -2,4 +2,9 @@
 
 Start application:
 
-  ruby app.rb
+  $ ruby run.rb
+
+Run tests
+
+  $ rspec spec
+  

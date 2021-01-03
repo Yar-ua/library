@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe Reader do
+RSpec.describe Order do
   let(:author) { Author.new('Tom Sawyer', 'Test Bio') }
   let(:book) { Book.new("Tom's fake book", author) }
   let(:reader) { Reader.new('Gilly', 'g@mail.com', 'Rome', 'Cool Ave', 60) }
