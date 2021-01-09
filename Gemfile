@@ -13,3 +13,5 @@ group :development, :test do
   gem 'pry'
   gem 'rspec'
 end
+
+gem 'simplecov', require: false, group: :test
