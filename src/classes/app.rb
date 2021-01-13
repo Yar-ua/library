@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-
-# Description/Explanation of App class
 class App
   attr_reader :library, :config
 
@@ -12,12 +9,12 @@ class App
 
   def load_data
     unless File.exist?(@file_name)
-      prepare_seeds(@config['seeds'])
-      @library.create(@file_name)
+      @library.create_seeds
+      @library.save_file(@file_name)
     end
 
     if File.exist?(@file_name)
-      @library.read(@file_name)
+      @library.load_db(@file_name)
     else
       puts 'Cannot load data - no data file'
     end
@@ -28,13 +25,6 @@ class App
   end
 
   protected
-
-  def prepare_seeds(conf)
-    @library.seed_authors(conf['authors'])
-    @library.seed_books(conf['books'])
-    @library.seed_readers(conf['readers'])
-    @library.seed_orders(conf['orders'])
-  end
 
   def stata_output(conf)
     puts '====='

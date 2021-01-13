@@ -7,4 +7,3 @@ Start application:
 Run tests
 
   $ rspec spec
-  

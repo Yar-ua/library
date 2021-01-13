@@ -9,9 +9,7 @@ gem 'faker'
 gem 'fasterer', require: false
 gem 'rubocop', require: false
 
-group :development, :test do
-  gem 'pry'
-  gem 'rspec'
-end
+gem 'pry', require: false
+gem 'rspec', require: false
 
 gem 'simplecov', require: false, group: :test

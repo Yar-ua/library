@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-
-# Description/Explanation of Order class
 class Order
   include Validator
   attr_reader :book, :reader, :date

@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-
-# Description/Explanation of Author class
 class Author
   include Validator
   attr_reader :name, :biography

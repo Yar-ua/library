@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-
-# Description/Explanation of Reader class
 class Reader
   include Validator
   attr_reader :name, :email, :city, :street, :house

@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-
-# Description/Explanation of Validator module
 module Validator
   include Errors
 

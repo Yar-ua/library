@@ -1,11 +1,5 @@
 data_filename: "lib_data.yaml"
-data_filename_test: "lib_data_test.yaml"
-seeds:
-  authors: 10
-  books: 3
-  readers: 40
-  orders: 100
 output:
-  top_readers: 3
-  top_books: 5
+  top_readers: 1
+  top_books: 1
   readers_qty: 3

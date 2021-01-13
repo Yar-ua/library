@@ -1,9 +1,9 @@
-# frozen_string_literal: true
-
 require 'spec_helper'
 
 RSpec.describe Author do
-  let(:author) { Author.new('Lance Vance', 'Test Bio') }
+  let(:author) { Author.new(name, bio) }
+  let(:name) { 'Lance Vance' }
+  let(:bio) { 'Test Bio' }
 
   describe 'Author after initialize must be valid with valid attributes' do
     it { expect(:name).to be }

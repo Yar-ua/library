@@ -1,6 +1,3 @@
-# frozen_string_literal: true
-
-# Description/Explanation of Book class
 class Book
   include Validator
   attr_reader :title, :author
