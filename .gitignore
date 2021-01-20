@@ -1,12 +1,5 @@
 # ignore this
 *.yaml
-*.yml
 
 # Simplecov gem folder
 coverage
-
-# do not ignore this
-!config.yml
-!config_test.yml
-!.fasterer.yml
-!.rubocop.yml
