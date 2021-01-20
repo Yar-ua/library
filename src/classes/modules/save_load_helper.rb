@@ -4,6 +4,6 @@ module SaveLoadHelper
   end
 
   def load_file(file_name)
-    YAML.safe_load(File.open(file_name), [Library, Author, Book, Reader, Order, Date], [], true)
+    File.open(file_name) { |file| YAML.safe_load(file, [Library, Author, Book, Reader, Order, Date], [], true)}
   end
 end
