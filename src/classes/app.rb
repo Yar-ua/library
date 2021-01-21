@@ -12,12 +12,7 @@ class App
       @library.create_seeds
       @library.save_file(@file_name)
     end
-
-    if File.exist?(@file_name)
-      @library.load_db(@file_name)
-    else
-      puts 'Cannot load data - no data file'
-    end
+    @library.load_db(@file_name)
   end
 
   def output
