@@ -15,43 +15,43 @@ RSpec.describe Reader do
   describe 'test validation' do
     it 'with empty attributes' do
       expect { Reader.new(nil, 's@mail.com', 'Toronto', 'Elm St.', 51) }.to raise_error(
-        Errors::EmptyValueError, 'Empty parameter!'
+        EmptyValueError, 'Empty parameter!'
       )
       expect { Reader.new('Sam', nil, 'Toronto', 'Elm St.', 51) }.to raise_error(
-        Errors::EmptyValueError, 'Empty parameter!'
+        EmptyValueError, 'Empty parameter!'
       )
       expect { Reader.new('Sam', 's@mail.com', nil, 'Elm St.', 51) }.to raise_error(
-        Errors::EmptyValueError, 'Empty parameter!'
+        EmptyValueError, 'Empty parameter!'
       )
       expect { Reader.new('Sam', 's@mail.com', 'Toronto', nil, 51) }.to raise_error(
-        Errors::EmptyValueError, 'Empty parameter!'
+        EmptyValueError, 'Empty parameter!'
       )
       expect { Reader.new('Sam', 's@mail.com', 'Toronto', 'Elm St.', nil) }.to raise_error(
-        Errors::EmptyValueError, 'Empty parameter!'
+        EmptyValueError, 'Empty parameter!'
       )
     end
 
     it 'with wrong String type of argument' do
       expect { Reader.new(777, 's@mail.com', 'Toronto', 'Elm St.', 51) }.to raise_error(
-        Errors::WrongTypeError, 'Wrong class of argument!'
+        WrongTypeError, 'Wrong class of argument!'
       )
       expect { Reader.new('Sam', [email: 's@mail.com'], 'Toronto', 'Elm St.', 51) }.to raise_error(
-        Errors::WrongTypeError, 'Wrong class of argument!'
+        WrongTypeError, 'Wrong class of argument!'
       )
     end
 
     it 'with wrong Integer type of argument' do
       expect { Reader.new('Sam', 's@mail.com', 'Toronto', 'Elm St.', '51') }.to raise_error(
-        Errors::WrongTypeError, 'Wrong class of argument!'
+        WrongTypeError, 'Wrong class of argument!'
       )
     end
 
     it 'with wrong not positive house value' do
       expect { Reader.new('Sam', 's@mail.com', 'Toronto', 'Elm St.', -4) }.to raise_error(
-        Errors::NonPositiveError, 'Parameter is not positive!'
+        NonPositiveError, 'Parameter is not positive!'
       )
       expect { Reader.new('Sam', 's@mail.com', 'Toronto', 'Elm St.', 0) }.to raise_error(
-        Errors::NonPositiveError, 'Parameter is not positive!'
+        NonPositiveError, 'Parameter is not positive!'
       )
     end
 

@@ -1,5 +1,4 @@
-module Validator
-  include Errors
+module ValidationHelper
 
   def validate_presence(*args)
     raise EmptyValueError if args.any?(&:nil?)

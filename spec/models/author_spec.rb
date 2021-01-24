@@ -16,11 +16,11 @@ RSpec.describe Author do
 
   describe 'test validation' do
     it 'with empty name' do
-      expect { Author.new(nil, 'Test Bio') }.to raise_error(Errors::EmptyValueError, 'Empty parameter!')
+      expect { Author.new(nil, 'Test Bio') }.to raise_error(EmptyValueError, 'Empty parameter!')
     end
 
     it 'with wrong name type' do
-      expect { Author.new(123, 'Test Bio') }.to raise_error(Errors::WrongTypeError, 'Wrong class of argument!')
+      expect { Author.new(123, 'Test Bio') }.to raise_error(WrongTypeError, 'Wrong class of argument!')
     end
 
     it 'with optional biography' do

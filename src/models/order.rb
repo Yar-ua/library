@@ -1,5 +1,5 @@
 class Order
-  include Validator
+  include ValidationHelper
   attr_reader :book, :reader, :date
 
   def initialize(book, reader, date = Time.now.to_date)
@@ -9,7 +9,7 @@ class Order
     @date = date
   end
 
-  protected
+  private
 
   def validate(book, reader, date)
     validate_presence(book, reader, date)

@@ -51,11 +51,11 @@ RSpec.describe Library do
   end
 
   def load_config
-    @file_name_test = YAML.load_file(File.expand_path('../../config/config_test.yml', __dir__))['data_filename']
+    @file_name_test = YAML.load_file(File.expand_path('../../spec/support/config_test.yml', __dir__))['data_filename']
   end
 
   after :all do
     load_config
-    File.delete(File.expand_path(File.join('../..', @file_name_test), __dir__))
+    File.delete(File.expand_path(@file_name_test, 'db'))
   end
 end

@@ -11,8 +11,8 @@ RSpec.describe SaveLoadHelper do
 
   it 'Test save method' do
     library.save_file(@file_name_test)
-    expect(File.exist?(@file_name_test)).to be true
-    expect(File.open(@file_name_test, 'r').read).to eq(library.to_yaml)
+    expect(File.exist?(File.expand_path(@file_name_test, 'db'))).to be true
+    expect(File.open(File.expand_path(@file_name_test, 'db'), 'r').read).to eq(library.to_yaml)
   end
 
   describe 'Test load method' do
@@ -29,11 +29,11 @@ RSpec.describe SaveLoadHelper do
   end
 
   def load_config
-    @file_name_test = YAML.load_file(File.expand_path('../../../config/config_test.yml', __dir__))['data_filename']
+    @file_name_test = YAML.load_file(File.expand_path('../support/config_test.yml', __dir__))['data_filename']
   end
 
   after :all do
     load_config
-    File.delete(File.expand_path(File.join('../../..', @file_name_test), __dir__))
+    File.delete(File.expand_path(@file_name_test, 'db'))
   end
 end

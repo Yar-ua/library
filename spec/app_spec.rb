@@ -4,17 +4,15 @@ RSpec.describe App do
 
   let(:app) { App.new(load_config) }
 
-  it 'Test app initialization' do
+  before { app.load_data }
+
+  it 'Test loads config' do
     expect(app.config).to eq(load_config)
     expect(app.library).to be_instance_of(Library)
   end
 
-  before :each do
-    app.load_data
-  end
-
   it 'test load data' do
-    lib = YAML.load_file("./#{app.config['data_filename']}")
+    lib = YAML.load_file("./db/#{app.config['data_filename']}")
     expect(app.library.authors.last.name).to eq(lib.authors.last.name)
     expect(app.library.orders.first.reader.name).to eq(lib.orders.first.reader.name)
     expect(app.library.books.last.title).to eq(lib.books.last.title)
@@ -33,11 +31,8 @@ RSpec.describe App do
   end
 
   def load_config
-    # in this tests used special configuration for test cases, described in config_test.yml file
-    YAML.load_file(File.expand_path('../config/config_test.yml', __dir__))
+    YAML.load_file(File.expand_path('../spec/support/config_test.yml', __dir__))
   end
 
-  after :all do
-    File.delete(File.expand_path("../test_lib_data.yaml", __dir__))
-  end
+  after { File.delete(File.expand_path("../db/test_lib_data.yaml", __dir__)) }
 end

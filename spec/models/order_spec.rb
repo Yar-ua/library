@@ -17,17 +17,17 @@ RSpec.describe Order do
 
   describe 'test validation' do
     it 'with empty attributes' do
-      expect { Order.new(nil, reader) }.to raise_error(Errors::EmptyValueError, 'Empty parameter!')
-      expect { Order.new(book, nil) }.to raise_error(Errors::EmptyValueError, 'Empty parameter!')
+      expect { Order.new(nil, reader) }.to raise_error(EmptyValueError, 'Empty parameter!')
+      expect { Order.new(book, nil) }.to raise_error(EmptyValueError, 'Empty parameter!')
     end
 
     it 'with wrong class of attributes' do
-      expect { Order.new(reader, book) }.to raise_error(Errors::WrongTypeError, 'Wrong class of argument!')
-      expect { Order.new(book, book, reader) }.to raise_error(Errors::WrongTypeError, 'Wrong class of argument!')
+      expect { Order.new(reader, book) }.to raise_error(WrongTypeError, 'Wrong class of argument!')
+      expect { Order.new(book, book, reader) }.to raise_error(WrongTypeError, 'Wrong class of argument!')
       expect do
         Order.new(book, reader, 'string date')
-      end.to raise_error(Errors::WrongTypeError, 'Wrong class of argument!')
-      expect { Order.new('book', 'reader') }.to raise_error(Errors::WrongTypeError, 'Wrong class of argument!')
+      end.to raise_error(WrongTypeError, 'Wrong class of argument!')
+      expect { Order.new('book', 'reader') }.to raise_error(WrongTypeError, 'Wrong class of argument!')
     end
 
     describe 'with correct parameters' do

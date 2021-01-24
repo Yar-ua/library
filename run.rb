@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # @config value was initialized in loader.rb file
 require_relative './src/loader'
 

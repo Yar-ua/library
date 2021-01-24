@@ -18,17 +18,17 @@ RSpec.describe Book do
 
   describe 'test validation' do
     it 'with empty title or author' do
-      expect { Book.new(nil, author) }.to raise_error(Errors::EmptyValueError, 'Empty parameter!')
-      expect { Book.new(nil, nil) }.to raise_error(Errors::EmptyValueError, 'Empty parameter!')
-      expect { Book.new(nil, nil) }.to raise_error(Errors::EmptyValueError, 'Empty parameter!')
+      expect { Book.new(nil, author) }.to raise_error(EmptyValueError, 'Empty parameter!')
+      expect { Book.new(nil, nil) }.to raise_error(EmptyValueError, 'Empty parameter!')
+      expect { Book.new(nil, nil) }.to raise_error(EmptyValueError, 'Empty parameter!')
     end
 
     it 'with wrong title type' do
-      expect { Book.new(555, author) }.to raise_error(Errors::WrongTypeError, 'Wrong class of argument!')
+      expect { Book.new(555, author) }.to raise_error(WrongTypeError, 'Wrong class of argument!')
     end
 
     it 'with wrong author type' do
-      expect { Book.new('title', [hash: author]) }.to raise_error(Errors::WrongTypeError, 'Wrong class of argument!')
+      expect { Book.new('title', [hash: author]) }.to raise_error(WrongTypeError, 'Wrong class of argument!')
     end
 
     it 'with correct parameters' do
