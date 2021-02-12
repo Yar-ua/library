@@ -9,13 +9,13 @@ RSpec.describe SaveLoadHelper do
     library.create_seeds
   end
 
-  it 'Test save method' do
+  it 'Save data to DB' do
     library.save_file(@file_name_test)
     expect(File.exist?(File.expand_path(@file_name_test, 'db'))).to be true
     expect(File.open(File.expand_path(@file_name_test, 'db'), 'r').read).to eq(library.to_yaml)
   end
 
-  describe 'Test load method' do
+  describe 'Load data from DB' do
     before :each do
       load_config
       library.load_db(@file_name_test)

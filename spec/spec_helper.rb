@@ -1,7 +1,6 @@
 require 'simplecov'
 SimpleCov.start
 
-# Require my custom loader
 require_relative File.expand_path('../src/loader', File.dirname(__FILE__))
 
 RSpec.configure do |config|

@@ -3,25 +3,25 @@ require 'spec_helper'
 RSpec.describe App do
 
   let(:app) { App.new(load_config) }
+  let(:top_reader) { app.library.top_reader(app.config['output']['top_readers']).join(' || ') }
+  let (:top_books) { app.library.most_popular_books(app.config['output']['top_books']).join(' || ') }
+  let (:readers_qty) { app.library.readers_of_popular_books(app.config['output']['readers_qty']) }
 
   before { app.load_data }
 
-  it 'Test loads config' do
+  it 'loads config' do
     expect(app.config).to eq(load_config)
     expect(app.library).to be_instance_of(Library)
   end
 
-  it 'test load data' do
+  it 'load data' do
     lib = YAML.load_file("./db/#{app.config['data_filename']}")
     expect(app.library.authors.last.name).to eq(lib.authors.last.name)
     expect(app.library.orders.first.reader.name).to eq(lib.orders.first.reader.name)
     expect(app.library.books.last.title).to eq(lib.books.last.title)
   end
 
-  it 'test output' do
-    top_reader = app.library.top_reader(app.config['output']['top_readers']).join(' || ')
-    top_books = app.library.most_popular_books(app.config['output']['top_books']).join(' || ')
-    readers_qty = app.library.readers_of_popular_books(app.config['output']['readers_qty'])
+  it 'output sorted data' do
     expect { app.output }.to output(include 'Top readers:').to_stdout
     expect { app.output }.to output(include 'Top of the most popular books:').to_stdout
     expect { app.output }.to output(include 'Quantity of readers of the most popular books:').to_stdout
