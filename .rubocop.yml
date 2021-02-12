@@ -1,0 +1,9 @@
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'spec/**/*'
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+  

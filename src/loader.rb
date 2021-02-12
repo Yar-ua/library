@@ -1,0 +1,17 @@
+require 'date'
+require 'yaml'
+require 'faker'
+
+require_relative './errors/empty_value_error'
+require_relative './errors/non_positive_error'
+require_relative './errors/wrong_type_error'
+require_relative './helpers/validation_helper'
+require_relative './helpers/seed_helper'
+require_relative './helpers/save_load_helper'
+
+require_relative './models/library'
+require_relative './models/author'
+require_relative './models/book'
+require_relative './models/order'
+require_relative './models/reader'
+require_relative './models/app'
